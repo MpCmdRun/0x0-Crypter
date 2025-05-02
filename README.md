@@ -57,7 +57,6 @@ Unauthorized access to computer systems is illegal.
 - [ ] Add Indirect Syscalls
 - [ ] Add Process Injection
 - [ ] Add In Memory Execution
-- [ ] Add Obfuscator/Packing
 
 ---
 
