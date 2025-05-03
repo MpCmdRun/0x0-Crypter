@@ -26,11 +26,6 @@ namespace Crypter.Forms
 
         private void FrmCrypter_Load(object sender, EventArgs e)
         {
-            SettingsObject obj = Settings.Load();
-            if (obj != null)
-            {
-                UnpackSettings(obj);
-            }
             Console.WriteLine("[+] Loaded Crypter and Resources!");
         }
         

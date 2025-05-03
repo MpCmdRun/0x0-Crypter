@@ -1,7 +1,6 @@
 C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Crypter.exe.config
 C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Crypter.exe
 C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Crypter.pdb
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Newtonsoft.Json.dll
 C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Newtonsoft.Json.xml
 C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.csproj.AssemblyReference.cache
 C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.Forms.FrmCrypter.resources
@@ -10,11 +9,5 @@ C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.csproj.CoreCompi
 C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.csproj.Up2Date
 C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.exe
 C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.pdb
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.dll
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.Mdb.dll
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.Pdb.dll
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.Rocks.dll
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.pdb
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.Mdb.pdb
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.Pdb.pdb
-C:\Users\miles\source\repos\Crypter\Crypter\bin\Release\Mono.Cecil.Rocks.pdb
+C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.csproj.Fody.CopyLocal.cache
+C:\Users\miles\source\repos\Crypter\Crypter\obj\Release\Crypter.csproj.Fody.RuntimeCopyLocal.cache
