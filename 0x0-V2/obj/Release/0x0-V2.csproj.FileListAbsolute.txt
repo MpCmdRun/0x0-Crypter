@@ -1,0 +1,9 @@
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\bin\Release\0x0-V2.exe.config
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\bin\Release\0x0-V2.exe
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\bin\Release\0x0-V2.pdb
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\obj\Release\0x0-V2.csproj.AssemblyReference.cache
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\obj\Release\_0x0_V2.FrmMain.resources
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\obj\Release\0x0-V2.csproj.GenerateResource.cache
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\obj\Release\0x0-V2.csproj.CoreCompileInputs.cache
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\obj\Release\0x0-V2.exe
+C:\Users\miles\source\repos\0x0-V2\0x0-V2\obj\Release\0x0-V2.pdb
